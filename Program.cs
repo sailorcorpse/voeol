@@ -85,7 +85,7 @@ class Program
 {
     static void Main() 
     {
-        List <string> elements = new List<string>(); //список, где хранится только строки
+        List <string> elements = new List<string>(); 
         while (true) 
         {
             Console.WriteLine("Введите элемент (нажмите Enter с пустым вводом для отстановки):");
@@ -98,8 +98,8 @@ class Program
         }
         if (elements.Count > 0) 
         {
-            string shortest = elements.OrderBy(s => s.Length).First(); //сортировка элементов в порядке возрастания
-            string longest = elements.OrderByDescending(s => s.Length).First(); //сортировка элементов в порядке убывания
+            string shortest = elements.OrderBy(s => s.Length).First(); 
+            string longest = elements.OrderByDescending(s => s.Length).First(); 
             
             Console.WriteLine($"Самый короткий элемент: {shortest}");
             Console.WriteLine($"Самый длинный элемент: {longest}");
@@ -121,12 +121,10 @@ class Program
     static void Main() 
     {
         int startRange, endRange;
-        //ToInt32(Single) Преобразует значение заданного числа с плавающей запятой одиночной точности в эквивалентное 32-битовое целое число со знаком.
         Console.WriteLine("Введите начало диапазона:");
         startRange = Convert.ToInt32(Console.ReadLine());
         Console.WriteLine("Введите конец диапазона:");
         endRange = Convert.ToInt32(Console.ReadLine());
-        //Range создаёт последовательность целых чисел
         int[] filledArray = FillArrayWithRandomNumbers(startRange, endRange);
         
         Console.WriteLine("Случайно сгенерированные числа:");
@@ -162,7 +160,6 @@ class Program
         
         string[] words = input.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
         int wordCount = words.Length;
-        //программа использует метод Split для разделения введенного предложения на слова, которые затем сохраняются в массиве строк words.
         input = "Start " + input + " End";
         
         Console.WriteLine("Модифицированное предложение: " + input);
