@@ -1,4 +1,55 @@
-﻿//1.3/2
+//1.3/1
+
+using System;
+using System.IO;
+
+
+class Program
+{
+    static void Main()
+    {
+        string[] lines = File.ReadAllLines(@"C:\Users\TTIT\input.txt");
+
+        string[] selectedNumbersStr = lines[0].Split(' ');
+        int[] selectedNumbers = Array.ConvertAll(selectedNumbersStr, int.Parse);
+
+        int n = int.Parse(lines[1]);
+
+        using (StreamWriter writer = new StreamWriter(@"C:\Users\TTIT\output.txt"))
+        {
+            for (int i = 2; i < n + 2; i++)
+            {
+                string[] ticketNumbersStr = lines[i].Split(' ');
+                int[] ticketNumbers = Array.ConvertAll(ticketNumbersStr, int.Parse);
+
+                int count = 0;
+                foreach (int number in ticketNumbers)
+                {
+                    if (Array.Exists(selectedNumbers, x => x == number))
+                    {
+                        count++;
+                        if (count >= 3)
+                        {
+                            break;
+                        }
+                            
+                    }
+                }
+                if (count >= 3)
+                {
+                    writer.WriteLine("Lucky");
+                }
+                else
+                {
+                    writer.WriteLine("Unlucky");
+                }
+            }
+        }
+        Console.WriteLine("Готово! Результаты записаны в файл Output.txt.");
+    }
+}
+
+//1.3/2
 
 using System;
 using System.IO;
