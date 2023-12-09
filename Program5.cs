@@ -55,8 +55,8 @@ class Program
 //1.5/3
 
 using System;
-using System.Linq;
 using System.IO;
+using System.Linq;
 
 class Program
 {
@@ -64,22 +64,22 @@ class Program
     {
         string filePath = @"C:\Users\TTIT\numsTask3.txt";
         string[] lines = File.ReadAllLines(filePath);
-        int[] numbers = lines[0].Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+        string[] nums = lines[0].Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+        int[] numbers = Array.ConvertAll(nums, int.Parse);
 
-        int max = numbers.Max();
-        int sum = 0;
+        int minIndex = Array.IndexOf(numbers, numbers.Min());
 
-        foreach (int num in numbers)
+        double average = 0;
+        for (int i = 0; i < minIndex; i++)
         {
-            if (Math.Abs(num - max) == 1)
-            {
-                sum += num;
-            }
+            average += numbers[i];
         }
+        average /= minIndex;
 
-        File.WriteAllText(@"C:\Users\TTIT\numsTask3.txt", sum.ToString());
+        Console.WriteLine("Среднее арифметическое элементов до минимального: " + average);
     }
 }
+
 
 //1.5/4
 
